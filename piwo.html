@@ -68,6 +68,9 @@
       var twitch = document.getElementById("twitchNameId");
       var youtube = document.getElementById("youtubeNameId");
       var checkboxVertical = document.getElementById("verticalCheckboxId");
+
+      twitch.value = localStorage.twitchUsername;
+      youtube.value = localStorage.youtubeValue;
       
       if(localStorage.isVertical == "true"){
         ToggleHorizontal(localStorage.isVertical);
