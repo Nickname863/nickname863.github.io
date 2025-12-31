@@ -35,7 +35,7 @@
     <div class="actionBar">
       Twitch Name <input type="text" id="twitchNameId" name="twitchChat" value="piwoyt">
       Youtube Stream URL <input type="text" id="youtubeNameId" name="youtubeChat" value="">
-      Make Horizontal <input type="checkbox" id="horizontalCheckboxId" name="horizontalCheckbox" onchange="ToggleHorizontal(this);"/>
+      Make Horizontal <input type="checkbox" id="horizontalCheckboxId" name="horizontalCheckbox" value="false" onchange="ToggleHorizontal(this);"/>
       <button type="button" onclick="UpdateChats()">Update</button> 
     </div>
 
@@ -51,7 +51,7 @@
         id="youtubeEmbed"
         allowfullscreen=""
         frameborder="0"
-        src="https://www.youtube.com/live_chat?v=Bv9jXle11UM&embed_domain=nickname863.github.io"
+        src="https://www.youtube.com/live_chat?v=nourl&embed_domain=nickname863.github.io"
         class="childElement"
       ></iframe>
     </div>
@@ -65,7 +65,7 @@
       var youtubeIframe = document.getElementById("youtubeEmbed");
       var twitchIframe = document.getElementById("twitchEmbed");
 
-      
+      UpdateChats();
 
       function ToggleHorizontal(input){
 
@@ -83,7 +83,7 @@
           var youtube = document.getElementById("youtubeNameId");
 
           urlParams = new URLSearchParams(youtube.value);
-          var videoId = myParam = urlParams.get('https://www.youtube.com/watch?v');
+          var videoId = myParam = urlParams.get('v');
           var twitchUsername = twitch.value;
 
           youtubeIframe.src = youtubeBaseUrl.replace("<placeholder>", videoId);
