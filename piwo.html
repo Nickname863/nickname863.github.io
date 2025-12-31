@@ -82,7 +82,7 @@
           var twitch = document.getElementById("twitchNameId");
           var youtube = document.getElementById("youtubeNameId");
 
-          var splitArray = youtube.valuesplit("&v");
+          var splitArray = youtube.value.split("&v");
           var videoId = myParam = splitArray[splitArray.length];
           var twitchUsername = twitch.value;
 
