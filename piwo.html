@@ -20,27 +20,80 @@
         flex: 1;
         display: flex;
       }
+      .actionBar {
+        width: 100%;
+        height: 1.5rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: wheat;
+      }
     </style>
   </head>
 
   <body>
-    <div id="chatContainer" class="container containerColumn">
+    <div class="actionBar">
+      Twitch Name <input type="text" id="twitchNameId" name="twitchChat" value="piwoyt">
+      Youtube Stream URL <input type="text" id="youtubeNameId" name="youtubeChat" value="">
+      Make Horizontal <input type="checkbox" id="horizontalCheckboxId" name="horizontalCheckbox" onchange="ToggleHorizontal(this);"/>
+      <button type="button" onclick="UpdateChats()">Update</button> 
+    </div>
+
+    <div id="chatContainer" class="container containerRow">
       <iframe
+        id="twitchEmbed"
         src="https://www.twitch.tv/embed/piwoyt/chat?parent=nickname863.github.io"
         class="childElement"
       >
       </iframe>
 
       <iframe
+        id="youtubeEmbed"
         allowfullscreen=""
         frameborder="0"
         src="https://www.youtube.com/live_chat?v=Bv9jXle11UM&embed_domain=nickname863.github.io"
         class="childElement"
-
       ></iframe>
     </div>
 
-    <script></script>
+    <script>
+      var chatContainer = document.getElementById("chatContainer");
+
+      var twitchBaseUrl = "https://www.twitch.tv/embed/<placeholder>/chat?parent=nickname863.github.io";
+      var youtubeBaseUrl = "https://www.youtube.com/live_chat?v<placeholder>&embed_domain=nickname863.github.io";
+
+      var youtubeIframe = document.getElementById("youtubeEmbed");
+      var twitchIframe = document.getElementById("twitchEmbed");
+
+      
+
+      function ToggleHorizontal(input){
+
+        if(input.checked){
+          chatContainer.classList.replace("containerRow","containerColumn")
+        }else{
+          chatContainer.classList.replace("containerColumn","containerRow")
+        }
+
+      }
+
+      function UpdateChats()
+      {
+          var twitch = document.getElementById("twitchNameId");
+          var youtube = document.getElementById("youtubeNameId");
+
+          urlParams = new URLSearchParams(youtube.value);
+          var videoId = myParam = urlParams.get('https://www.youtube.com/watch?v');
+          var twitchUsername = twitch.value;
+
+          youtubeIframe.src = youtubeBaseUrl.replace("<placeholder>", videoId);
+          twitchIframe.src = twitchBaseUrl.replace("<placeholder>", twitchUsername);
+
+      }
+
+
+
+    </script>
   </body>
 </html>
 <!-- end -->
