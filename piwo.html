@@ -35,7 +35,7 @@
     <div class="actionBar">
       Twitch Name <input type="text" id="twitchNameId" name="twitchChat" value="piwoyt">
       Youtube Chat Popout URL <input type="text" id="youtubeNameId" name="youtubeChat" value="">
-      Make Vertical <input type="checkbox" id="horizontalCheckboxId" name="horizontalCheckbox" value="false" onchange="ToggleHorizontal(this);"/>
+      Make Vertical <input type="checkboxVertical" id="horizontalCheckboxId" name="horizontalCheckbox" value="false" onchange="ToggleHorizontalButton(this);"/>
       <button type="button" onclick="UpdateChats()">Update</button> 
     </div>
 
@@ -65,22 +65,34 @@
       var youtubeIframe = document.getElementById("youtubeEmbed");
       var twitchIframe = document.getElementById("twitchEmbed");
 
+      var twitch = document.getElementById("twitchNameId");
+      var youtube = document.getElementById("youtubeNameId");
+      var checkboxVertical = document.getElementById("checkboxVertical");
+      checkboxVertical.value = localStorage.isVertical;
+      ToggleHorizontal(!localStorage.isVertical);
+
       UpdateChats();
+
+      function ToggleHorizontalButton(input){
+          ToggleHorizontal(input.value);
+      }
 
       function ToggleHorizontal(input){
 
-        if(input.checked){
+        if(input){
           chatContainer.classList.replace("containerRow","containerColumn")
         }else{
           chatContainer.classList.replace("containerColumn","containerRow")
         }
 
+        localStorage.isVertical = input;
+
       }
+
 
       function UpdateChats()
       {
-          var twitch = document.getElementById("twitchNameId");
-          var youtube = document.getElementById("youtubeNameId");
+
 
           var splitArray = youtube.value.split("&v");
           var videoId = myParam = splitArray[splitArray.length-1];
@@ -88,6 +100,9 @@
 
           youtubeIframe.src = youtubeBaseUrl.replace("<placeholder>", videoId);
           twitchIframe.src = twitchBaseUrl.replace("<placeholder>", twitchUsername);
+
+          localStorage.youtubeValue = youtube.value;
+          localStorage.twitchUsername = twitchUsername;
 
       }
 
