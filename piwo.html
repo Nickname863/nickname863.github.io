@@ -82,8 +82,8 @@
           var twitch = document.getElementById("twitchNameId");
           var youtube = document.getElementById("youtubeNameId");
 
-          urlParams = new URLSearchParams(youtube.value);
-          var videoId = myParam = urlParams.get('v');
+          var splitArray = youtube.valuesplit("&v");
+          var videoId = myParam = splitArray[splitArray.length];
           var twitchUsername = twitch.value;
 
           youtubeIframe.src = youtubeBaseUrl.replace("<placeholder>", videoId);
