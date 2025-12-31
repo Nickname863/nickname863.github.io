@@ -85,7 +85,7 @@
           chatContainer.classList.replace("containerColumn","containerRow")
         }
 
-        localStorage.isVertical = input;
+        localStorage.setItem("isVertical", input);
 
       }
 
@@ -101,8 +101,8 @@
           youtubeIframe.src = youtubeBaseUrl.replace("<placeholder>", videoId);
           twitchIframe.src = twitchBaseUrl.replace("<placeholder>", twitchUsername);
 
-          localStorage.youtubeValue = youtube.value;
-          localStorage.twitchUsername = twitchUsername;
+          localStorage.setItem("youtubeValue" ,youtube.value);
+          localStorage.setItem("twitchUsername", twitchUsername);
 
       }
 
