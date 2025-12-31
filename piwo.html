@@ -35,7 +35,7 @@
     <div class="actionBar">
       Twitch Name <input type="text" id="twitchNameId" name="twitchChat" value="piwoyt">
       Youtube Chat Popout URL <input type="text" id="youtubeNameId" name="youtubeChat" value="">
-      Make Vertical <input type="checkboxVertical" id="horizontalCheckboxId" name="horizontalCheckbox" value="false" onchange="ToggleHorizontalButton(this);"/>
+      Make Vertical <input type="checkbox" id="verticalCheckboxId" name="verticalCheckbox" value="false" onchange="ToggleHorizontalButton(this);"/>
       <button type="button" onclick="UpdateChats()">Update</button> 
     </div>
 
@@ -67,7 +67,7 @@
 
       var twitch = document.getElementById("twitchNameId");
       var youtube = document.getElementById("youtubeNameId");
-      var checkboxVertical = document.getElementById("checkboxVertical");
+      var checkboxVertical = document.getElementById("verticalCheckboxId");
       checkboxVertical.value = localStorage.isVertical;
       ToggleHorizontal(!localStorage.isVertical);
 
