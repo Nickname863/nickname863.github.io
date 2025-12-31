@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head></head>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        background-color: DodgerBlue;
+        height: 100vh;
+      }
 
-<body>
+      .containerRow {
+        flex-direction: row;
+      }
 
- 
- <iframe src="https://www.twitch.tv/embed/piwoyt/chat?parent=nickname863.github.io"
-        style="height: 100vh;width: 50%;">
-</iframe>
+      .containerColumn {
+        flex-direction: column;
+      }
 
+      .childElement {
+        flex: 1;
+        display: flex;
+      }
+    </style>
+  </head>
 
- <iframe src="https://www.twitch.tv/embed/piwoyt/chat?parent=nickname863.github.io"
-        style="height: 100vh;width: 50%;">
-</iframe>
+  <body>
+    <div class="container containerColumn">
+      <iframe
+        src="https://www.twitch.tv/embed/piwoyt/chat?parent=nickname863.github.io"
+        class="childElement"
+      >
+      </iframe>
 
+      <iframe
+        allowfullscreen=""
+        frameborder="0"
+        src="https://www.youtube.com/live_chat?v=Bv9jXle11UM&embed_domain=nickname863.github.io"
+        class="childElement"
 
+      ></iframe>
+    </div>
 
-</body>
-
+    <script></script>
+  </body>
 </html>
 <!-- end -->
