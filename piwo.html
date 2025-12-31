@@ -68,13 +68,17 @@
       var twitch = document.getElementById("twitchNameId");
       var youtube = document.getElementById("youtubeNameId");
       var checkboxVertical = document.getElementById("verticalCheckboxId");
-      checkboxVertical.value = localStorage.isVertical;
-      ToggleHorizontal(!localStorage.isVertical);
+      
+      if(localStorage.isVertical == "true"){
+        ToggleHorizontal(localStorage.isVertical);
+        checkboxVertical.checked = true;
+      }
+      
 
       UpdateChats();
 
       function ToggleHorizontalButton(input){
-          ToggleHorizontal(input.value);
+          ToggleHorizontal(input.checked);
       }
 
       function ToggleHorizontal(input){
